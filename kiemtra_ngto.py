@@ -1,19 +1,27 @@
-def is_prime(n):
-    for i in range(2, int(n ** 0.5) + 1):
-        if n % i == 0: return False
-    return n > 1
+import math
 
-def check(num):
-    number = int(num[-4:])
-    return 'YES' if is_prime(number) else 'NO'
+def is_prime(num):
+    for i in range(2, int(math.sqrt(num) + 1)):
+        if num % i == 0:
+            return False
+    return num > 1
 
-def solution():
-    print(check(input()))
+def main():
+    N, M = map(int, input().split())
     
-
-def main(sol, test_num):
-    for i in range(1, test_num + 1):
-        sol()
+    C = []
+    for i in range(N):
+        A = list(map(int, input().split()))
+        B = []
+        for j in A:
+            if is_prime(j):
+                B.append(1)
+            else: B.append(0)
+        C.append(B)
+        
+    for row in C:
+        print(*row)
+            
 
 if __name__ == '__main__':
-    main(solution, int(input()))
+    main()

@@ -1,25 +1,18 @@
-import math
+from math import gcd
 
 def main():
-    N, K = map(int, input().split())
+    N = int(input())
     
-    L = 10 ** (K - 1)
-    R = 10 ** K
+    A = list(map(int, input().split()))
+    A.sort()
     
-    res = []
-    for i in range(L, R):
-        if math.gcd(i, N) == 1:
-            res.append(i)
+    for i in range(N - 1):
+        for j in range(i + 1, N):
+            if gcd(A[i], A[j]) == 1:
+                print(A[i], A[j])
     
-    count = 0
-    for i in res:
-        print(i, end = ' ')
-        count += 1
-        
-        if count == 10:
-            print()
-            count = 0
-            
+    
+    
 
 if __name__ == '__main__':
-    main()
+    main()  
